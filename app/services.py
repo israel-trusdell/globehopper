@@ -5,7 +5,7 @@ import conn
 
 #------------Country-------------
 #Create a country record
-def createCountry(data):
+def createcountry(data):
     #Open connection
     conn.myconn._open_connection()
     mycursor = conn.myconn.cursor()
@@ -26,7 +26,7 @@ def createCountry(data):
     conn.myconn.close()
 
 #Get all records from country table using SQL
-def allCounties():
+def allcountiesservices():
 
     #Open connection
     conn.myconn._open_connection()
@@ -102,7 +102,7 @@ def createcityservices(data):
     mycursor.close()
     conn.myconn.close()
 
-    #Get all records from city table using SQL
+#Get all records from city table using SQL
 def allcitiesservices():
 
     #Open connection
@@ -117,3 +117,26 @@ def allcitiesservices():
     mycursor.close()
     conn.myconn.close
     return results
+
+#update city by id
+def updatecityservices(data,city_id):
+#Open connection
+    conn.myconn._open_connection()
+    mycursor = conn.myconn.cursor()
+
+    #Table columns
+    name = data['Name']
+    countryid = data['CountryId']
+    capital = data['Capital']
+    firstlandmark = data['FirstLandmark']
+    secondlandmark = data['SecondLandmark']
+    thirdlandmark = data['ThirdLandmark']
+
+    #Execute the SQL 
+    mysql = "UPDATE city SET Name = %s, CountryId = %s, Capital = %s, FirstLandmark = %s, SecondLandmark = %s, ThirdLandmark = %s WHERE CityId = %s;"
+    values = (name, countryid,capital,firstlandmark,secondlandmark,thirdlandmark,city_id)
+    mycursor.execute(mysql,values)
+
+    #Close connection
+    mycursor.close()
+    conn.myconn.close()

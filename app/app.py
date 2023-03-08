@@ -12,38 +12,42 @@ app = Flask(__name__)
 #------APIs--------
 #Create - POST API
 @app.post('/countries')
-def createCountry():
+def createcountryapp():
     data = request.json
-    return country.createCountry(data)
+    return country.createcountry(data)
 
 #Read API
 @app.get('/countries')
-def getAllCountries():
-    return country.getCountries()
+def getallcountriesapp():
+    return country.getcountries()
 
 #Put API
 @app.put('/countries/<int:country_id>')
-def updatecountry(country_id):
+def updatecountryapp(country_id):
     data = request.json
     return country.updatecountry(data,country_id)
 
 #Delete API
 @app.delete('/countries/<int:country_id>') #Query string parameter
-def deletecountry(country_id):
+def deletecountryapp(country_id):
     return country.deletecountry(country_id)
 
 #Get Cites
 #Read API
 @app.get('/city')
-def getallcities():
+def getallcitiesapp():
     return city.getcities()
 #Post Cities
 #Create City- POST API
 @app.post('/city')
-def createcity():
+def createcityapp():
     data = request.json
     return city.createcity(data)
 #Put Cities
+@app.put('/city/<int:city_id>')
+def updatecityapp(city_id):
+    data = request.json
+    return city.updatcity(data,city_id)
 #Delete Citie
 
 #------------------

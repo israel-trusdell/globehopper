@@ -24,3 +24,8 @@ def getcities():
             "ThirdLandmark" : row [6]
         })
     return jsonify(data)
+
+#Function to update city by id
+def updatcity(data, city_id):
+    services.updatecityservices(data,city_id)
+    return jsonify({'message' : 'City - Data updated successfully'})

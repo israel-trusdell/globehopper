@@ -4,13 +4,13 @@ from flask import Flask,request,jsonify
 import services
 
 #Creating country record
-def createCountry(data):
-    services.createCountry(data)
+def createcountry(data):
+    services.createcountry(data)
     return jsonify({'message' : 'Country - Data insterted successfully'})
 
 #Get all countires
-def getCountries():
-    results = services.allCounties()
+def getcountries():
+    results = services.allcountiesservices()
 
     #Using a for loop to jsonify the list/dict
     data = []
@@ -23,10 +23,10 @@ def getCountries():
         })
     return jsonify(data)
 
-#Finctions to update cuntry by id
+#Functions to update cuntry by id
 def updatecountry(data,country_id):
     services.updatecountry(data,country_id)
-    return jsonify({'message' : 'Data updated successfully'})
+    return jsonify({'message' : 'Country - Data updated successfully'})
 
 #Function to delete a country
 def deletecountry(country_id):
