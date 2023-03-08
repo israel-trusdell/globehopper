@@ -3,6 +3,7 @@
 from flask import Flask, request, jsonify
 import conn
 
+#------------Country-------------
 #Create a country record
 def createCountry(data):
     #Open connection
@@ -16,7 +17,7 @@ def createCountry(data):
     continent = data['Continent']
 
     #Execute the SQL 
-    mysql = "INSERT INTO Country (CountryId, Name, Population, Continent) VALUES (%s,%s,%s,%s);"
+    mysql = "INSERT INTO country (CountryId, Name, Population, Continent) VALUES (%s,%s,%s,%s);"
     values = (countryId, name, population,continent)
     mycursor.execute(mysql,values)
 
@@ -75,3 +76,44 @@ def deletecountrybyid(country_id):
     mycursor.close()
     conn.myconn.close()
 
+#------------City---------------
+#Create a country record
+def createcityservices(data):
+    #Open connection
+    conn.myconn._open_connection()
+    mycursor = conn.myconn.cursor()
+
+    #Table columns
+    cityid = data['CityId']
+    name = data['Name']
+    countryid = data['CountryId']
+    capital = data['Capital']
+    firstlandmark = data['FirstLandmark']
+    secondlandmark = data['SecondLandmark']
+    thirdlandmark = data['ThirdLandmark']
+    
+
+    #Execute the SQL 
+    mysql = "INSERT INTO city (CityId, Name, CountryId, Capital, FirstLandmark, SecondLandmark, ThirdLandmark) VALUES (%s,%s,%s,%s,%s,%s,%s);"
+    values = (cityid, name, countryid,capital,firstlandmark,secondlandmark,thirdlandmark)
+    mycursor.execute(mysql,values)
+
+    #Close connection
+    mycursor.close()
+    conn.myconn.close()
+
+    #Get all records from city table using SQL
+def allcitiesservices():
+
+    #Open connection
+    conn.myconn._open_connection()
+    mycursor = conn.myconn.cursor()
+
+    #Execute the SQL 
+    mycursor.execute("SELECT * FROM city")
+    results = mycursor.fetchall()
+
+    #Close connection
+    mycursor.close()
+    conn.myconn.close
+    return results

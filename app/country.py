@@ -3,10 +3,10 @@
 from flask import Flask,request,jsonify
 import services
 
-#
+#Creating country record
 def createCountry(data):
     services.createCountry(data)
-    return jsonify({'message' : 'Data insterted successfully'})
+    return jsonify({'message' : 'Country - Data insterted successfully'})
 
 #Get all countires
 def getCountries():

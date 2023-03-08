@@ -3,6 +3,7 @@
 
 from flask import Flask, request,jsonify
 import country
+import city
 
 
 #Using Flask framwork
@@ -30,8 +31,18 @@ def updatecountry(country_id):
 @app.delete('/countries/<int:country_id>') #Query string parameter
 def deletecountry(country_id):
     return country.deletecountry(country_id)
+
 #Get Cites
+#Read API
+@app.get('/city')
+def getallcities():
+    return city.getcities()
 #Post Cities
+#Create City- POST API
+@app.post('/city')
+def createcity():
+    data = request.json
+    return city.createcity(data)
 #Put Cities
 #Delete Citie
 
