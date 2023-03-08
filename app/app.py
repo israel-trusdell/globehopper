@@ -22,9 +22,14 @@ def getallcountriesapp():
     return country.getcountries()
 
 #Get countries by continent
-@app.get('/countries/<string:continent_str>')
-def getcountrybycontinentapp(continent_str):
-    return country.getcountrybycontinent(continent_str)
+@app.get('/countries/<string:continent>')
+def getcountrybycontinentapp(continent):
+    return country.getcountrybycontinent(continent)
+
+#Get city info with country Name
+@app.get('/countries/<string:country_str>/<int:captial>')
+def getcityinfobycountrynameapp(country_str,captial):
+    return country.getcitybycapitalname(country_str,captial)
 
 #Put API
 @app.put('/countries/<int:country_id>')

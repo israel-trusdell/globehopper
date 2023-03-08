@@ -34,8 +34,8 @@ def deletecountry(country_id):
     return jsonify({'message' : 'Country - Data successfully deleted'})
 
 #Function to get a country by continent
-def getcountrybycontinent(continent_str):
-    results = services.countrybycontinentservices(continent_str)
+def getcountrybycontinent(continent):
+    results = services.countrybycontinentservices(continent)
 
     #Using a for loop to jsonify the list/dict
     data = []
@@ -45,5 +45,20 @@ def getcountrybycontinent(continent_str):
             "Name" : row[1],
             "Population" : row[2],
             "Continent" : row[3]
+        })
+    return jsonify(data)
+
+#Get City info with Country name
+def getcitybycapitalname(country_str,captial):
+    results = services.getcapitalcitybycountryservices(country_str,captial)
+    #Using a for loop to jsonify the list/dict
+    data = []
+    for row in results:
+        data.append({
+            "Country" : row[0],
+            "Capital" : row[1],
+            "FirstLandmark" : row[2],
+            "SecondLandmark" : row[3],
+            "ThirdLandmark" : row[4]
         })
     return jsonify(data)

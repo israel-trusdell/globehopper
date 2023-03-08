@@ -91,6 +91,21 @@ def countrybycontinentservices(continent_str):
     conn.myconn.close()
     return results
 
+#Get details of a capital city from a country.
+def getcapitalcitybycountryservices(country_str,captial):
+    #Open connection
+    conn.myconn._open_connection()
+    mycursor = conn.myconn.cursor()
+
+    #Execute the SQL 
+    mycursor.execute("SELECT c.Name AS Country, ci.Name AS Capital, ci.FirstLandmark, ci.SecondLandmark, ci.ThirdLandmark FROM Country c INNER JOIN City ci ON c.CountryId = ci.CountryId AND ci.Capital = %s WHERE c.Name = %s;",(captial,country_str,))
+    results = mycursor.fetchall()
+
+    #Close connection
+    mycursor.close()
+    conn.myconn.close()
+    return results
+
 #------------City---------------
 
 #Create a country record
