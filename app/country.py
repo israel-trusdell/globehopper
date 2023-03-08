@@ -23,6 +23,12 @@ def getCountries():
         })
     return jsonify(data)
 
-#Finciton to get all counties in a continent 
-def getContinent():
-    return
+#Finctions to update cuntry by id
+def updatecountry(data,country_id):
+    services.updatecountry(data,country_id)
+    return jsonify({'message' : 'Data updated successfully'})
+
+#Function to delete a country
+def deletecountry(country_id):
+    services.deletecountrybyid(country_id)
+    return jsonify({'message' : 'Data successfully deleted'})

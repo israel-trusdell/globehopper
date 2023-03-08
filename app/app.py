@@ -4,6 +4,7 @@
 from flask import Flask, request,jsonify
 import country
 
+
 #Using Flask framwork
 app = Flask(__name__)
 
@@ -19,9 +20,23 @@ def createCountry():
 def getAllCountries():
     return country.getCountries()
 
+#Put API
+@app.put('/countries/<int:country_id>')
+def updatecountry(country_id):
+    data = request.json
+    return country.updatecountry(data,country_id)
+
+#Delete API
+@app.delete('/countries/<int:country_id>') #Query string parameter
+def deletecountry(country_id):
+    return country.deletecountry(country_id)
+#Get Cites
+#Post Cities
+#Put Cities
+#Delete Citie
 
 #------------------
 
 #Execute on the terminal
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
