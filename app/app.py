@@ -16,10 +16,15 @@ def createcountryapp():
     data = request.json
     return country.createcountry(data)
 
-#Read API
+#Read API -0 Get all counties
 @app.get('/countries')
 def getallcountriesapp():
     return country.getcountries()
+
+#Get countries by continent
+@app.get('/countries/<string:continent_str>')
+def getcountrybycontinentapp(continent_str):
+    return country.getcountrybycontinent(continent_str)
 
 #Put API
 @app.put('/countries/<int:country_id>')
@@ -32,26 +37,26 @@ def updatecountryapp(country_id):
 def deletecountryapp(country_id):
     return country.deletecountry(country_id)
 
-#Get Cites
+#Get City
 #Read API
 @app.get('/city')
 def getallcitiesapp():
     return city.getcities()
 
-#Post Cities
+#Post City
 #Create City- POST API
 @app.post('/city')
 def createcityapp():
     data = request.json
     return city.createcity(data)
 
-#Put Cities
+#Put City
 @app.put('/city/<int:city_id>')
 def updatecityapp(city_id):
     data = request.json
     return city.updatcity(data,city_id)
 
-#Delete Citie
+#Delete City
 @app.delete('/city/<int:city_id>')
 def deletecityapp(city_id):
     return city.deletecity(city_id)

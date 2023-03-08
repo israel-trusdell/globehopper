@@ -11,14 +11,14 @@ def createcountry(data):
     mycursor = conn.myconn.cursor()
 
     #Table columns
-    countryId = data['CountryId']
+    countryid = data['CountryId']
     name = data['Name']
     population = data['Population']
     continent = data['Continent']
 
     #Execute the SQL 
     mysql = "INSERT INTO country (CountryId, Name, Population, Continent) VALUES (%s,%s,%s,%s);"
-    values = (countryId, name, population,continent)
+    values = (countryid, name, population,continent)
     mycursor.execute(mysql,values)
 
     #Close connection
@@ -75,6 +75,21 @@ def deletecountrybyid(country_id):
     #Close connection
     mycursor.close()
     conn.myconn.close()
+
+#Get all countries in a given continent
+def countrybycontinentservices(continent_str):
+    #Open connection
+    conn.myconn._open_connection()
+    mycursor = conn.myconn.cursor()
+
+    #Execute the SQL 
+    mycursor.execute("SELECT * FROM country WHERE Continent = %s",(continent_str,))
+    results = mycursor.fetchall()
+
+    #Close connection
+    mycursor.close()
+    conn.myconn.close()
+    return results
 
 #------------City---------------
 
@@ -142,7 +157,7 @@ def updatecityservices(data,city_id):
     mycursor.close()
     conn.myconn.close()
 
-    #delete city by city_id
+#delete city by city_id
 def deleteccitybyidservices(city_id):
     #Open connection
     conn.myconn._open_connection()
