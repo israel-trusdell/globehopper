@@ -13,9 +13,12 @@ Non Functional Requirements
     • 99.99 % availability,  24 * 7
 
 Solution Steps:
+
 Step 1: JIRA - Have all the Functional requirements as JIRA Tickets
     Step 1 (a) : JIRA – Tickets should be traceable to GitHub
+
 Step 2: GitHub  - Create a GlobeHopper repo for the Web App
+
 Step 3: VSCode - Create Project in VSCode and create files as per the design
 
 Step 4: MySQL - Create Database in MySQL
