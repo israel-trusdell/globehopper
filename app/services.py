@@ -77,6 +77,7 @@ def deletecountrybyid(country_id):
     conn.myconn.close()
 
 #------------City---------------
+
 #Create a country record
 def createcityservices(data):
     #Open connection
@@ -136,6 +137,20 @@ def updatecityservices(data,city_id):
     mysql = "UPDATE city SET Name = %s, CountryId = %s, Capital = %s, FirstLandmark = %s, SecondLandmark = %s, ThirdLandmark = %s WHERE CityId = %s;"
     values = (name, countryid,capital,firstlandmark,secondlandmark,thirdlandmark,city_id)
     mycursor.execute(mysql,values)
+
+    #Close connection
+    mycursor.close()
+    conn.myconn.close()
+
+    #delete city by city_id
+def deleteccitybyidservices(city_id):
+    #Open connection
+    conn.myconn._open_connection()
+    mycursor = conn.myconn.cursor()
+
+    #Execute the SQL 
+    sql = "DELETE FROM city WHERE CityId = %s"
+    mycursor.execute(sql, (city_id,))
 
     #Close connection
     mycursor.close()

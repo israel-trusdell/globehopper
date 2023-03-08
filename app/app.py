@@ -37,18 +37,24 @@ def deletecountryapp(country_id):
 @app.get('/city')
 def getallcitiesapp():
     return city.getcities()
+
 #Post Cities
 #Create City- POST API
 @app.post('/city')
 def createcityapp():
     data = request.json
     return city.createcity(data)
+
 #Put Cities
 @app.put('/city/<int:city_id>')
 def updatecityapp(city_id):
     data = request.json
     return city.updatcity(data,city_id)
+
 #Delete Citie
+@app.delete('/city/<int:city_id>')
+def deletecityapp(city_id):
+    return city.deletecity(city_id)
 
 #------------------
 

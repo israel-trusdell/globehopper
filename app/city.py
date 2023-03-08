@@ -29,3 +29,8 @@ def getcities():
 def updatcity(data, city_id):
     services.updatecityservices(data,city_id)
     return jsonify({'message' : 'City - Data updated successfully'})
+
+#Function to delete a city
+def deletecity(city_id):
+    services.deleteccitybyidservices(city_id)
+    return jsonify({'message' : 'City - Data successfully deleted'})

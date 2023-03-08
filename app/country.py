@@ -31,4 +31,4 @@ def updatecountry(data,country_id):
 #Function to delete a country
 def deletecountry(country_id):
     services.deletecountrybyid(country_id)
-    return jsonify({'message' : 'Data successfully deleted'})
+    return jsonify({'message' : 'Country - Data successfully deleted'})
