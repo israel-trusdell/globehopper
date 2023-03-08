@@ -8,13 +8,20 @@ import country
 app = Flask(__name__)
 
 #------APIs--------
+#Create - POST API
+@app.post('/countries')
+def createCountry():
+    data = request.json
+    return country.createCountry(data)
+
 #Read API
 @app.get('/countries')
 def getAllCountries():
     return country.getCountries()
 
+
 #------------------
 
 #Execute on the terminal
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
