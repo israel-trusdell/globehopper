@@ -10,6 +10,7 @@ import city
 app = Flask(__name__)
 
 #------APIs--------
+
 #Create - POST API
 @app.post('/countries')
 def createcountryapp():
